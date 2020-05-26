@@ -75,7 +75,9 @@ public final class BaiduTranslator extends AbstractTranslator {
     @Override
     public String parses(String text) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readTree(text).path("trans_result").findPath("dst").toString();
+        String s = mapper.readTree(text).path("trans_result").findPath("dst").toString();
+        s = s.substring(1, s.length() - 1);
+        return s;
     }
 
     private String token(String text, String gtk) {

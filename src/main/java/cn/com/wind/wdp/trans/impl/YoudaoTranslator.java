@@ -68,6 +68,8 @@ public final class YoudaoTranslator extends AbstractTranslator {
     @Override
     public String parses(String text) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return  mapper.readTree(text).path("translateResult").findPath("tgt").toString();
+        String s = mapper.readTree(text).path("translateResult").findPath("tgt").toString();
+        s = s.substring(1, s.length() - 1);
+        return s;
     }
 }

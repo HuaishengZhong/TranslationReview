@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>翻译评阅</title>
+        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css">
+        <script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/translate.js"></script>
+        <script type="text/javascript" src="js/download.js"></script>
+        <script type="text/javascript" src="js/submit.js"></script>
+    </head>
+    <body>
+        <div class="container" style="padding: 10px 10px 10px;">
+            <h4 class="text-success text-center">翻译评阅</h4>
+            <form>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <fieldset class="form-group">
+                            <label for="engine" class="text-primary text-center">翻译引擎:</label>
+                            <select class="form-control" id="engine">
+                                <option value="google">谷歌翻译</option>
+                                <option value="baidu">百度翻译</option>
+                                <option value="tencent">腾讯翻译</option>
+                                <option value="youdao">有道翻译</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                    <div class="col-sm-4">
+                        <fieldset class="form-group">
+                            <label for="sl" class="text-primary text-center">源语言:</label>
+                            <select class="form-control" id="sl">
+                                <option value="zh">中文</option>
+                                <option value="en">英语</option>
+                                <option value="ja">日语</option>
+                                <option value="fr">法语</option>
+                                <option value="ko">韩语</option>
+                                <option value="de">德语</option>
+                                <option value="ru">俄语</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                    <div class="col-sm-4">
+                        <fieldset class="form-group">
+                            <label for="tl" class="text-primary text-center">目标语言:</label>
+                            <select class="form-control" id="tl">
+                                <option value="zh">中文</option>
+                                <option value="en">英语</option>
+                                <option value="jp">日语</option>
+                                <option value="fr">法语</option>
+                                <option value="ko">韩语</option>
+                                <option value="de">德语</option>
+                                <option value="ru">俄语</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                </div>
+
+
+                <fieldset class="form-group">
+                    <div>
+                        <label for="stext" class="text-info">源文本:</label>
+                    </div>
+                    <textarea id="stext" rows=10 class="col-md-12  text-info border border-info rounded">
+                    </textarea>
+                </fieldset>
+                <br/>
+
+                <fieldset class="form-group">
+                    <div>
+                        <label for="ttext" class="text-info">目标文本:</label>
+                    </div>
+                    <textarea readonly="readonly" id="ttext" rows=10
+                              class="col-md-12  text-primary border border-primary rounded"></textarea>
+                    </textarea>
+                </fieldset>
+                <br/>
+
+                <fieldset class="form-group">
+                    <div>
+                        <label for="mark" class="text-info">分数:</label>
+                    </div>
+                    <input type="text" id="mark" class="form-control-sm border" />
+                </fieldset>
+                <br/>
+
+                <button id="submit" class="btn btn-default">提交</button>
+                <br/>
+
+                <button id="download" class="btn btn-default">导出</button>
+
+            </form>
+
+        </div>
+    </body>
+</html>

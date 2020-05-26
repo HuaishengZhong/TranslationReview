@@ -37,7 +37,7 @@ public final class GoogleTranslator extends AbstractTranslator {
 
     @Override
     public void setFormData(LANG from, LANG to, String text) {
-        formData.put("client", "t");
+        formData.put("client", "webapp");
         formData.put("sl", langMap.get(from));
         formData.put("tl", langMap.get(to));
         formData.put("hl", "zh-CN");
@@ -49,14 +49,13 @@ public final class GoogleTranslator extends AbstractTranslator {
         formData.put("dt", "qca");
         formData.put("dt", "rw");
         formData.put("dt", "rm");
+        formData.put("dt", "sos");
         formData.put("dt", "ss");
         formData.put("dt", "t");
-        formData.put("ie", "UTF-8");
-        formData.put("oe", "UTF-8");
         formData.put("source", "btn");
         formData.put("ssel", "0");
         formData.put("tsel", "0");
-        formData.put("kc", "0");
+        formData.put("kc", "1");
         formData.put("tk", token(text));
         formData.put("q", text);
     }
@@ -84,7 +83,9 @@ public final class GoogleTranslator extends AbstractTranslator {
     @Override
     public String parses(String text) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readTree(text).get(0).get(0).get(0).toString();
+        String s = mapper.readTree(text).get(0).get(0).get(0).toString();
+        s = s.substring(1, s.length() - 1);
+        return s;
     }
 
     private String token(String text) {

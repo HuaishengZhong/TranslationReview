@@ -61,6 +61,8 @@ public final class TencentTranslator extends AbstractTranslator {
     @Override
     public String parses(String text) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return  mapper.readTree(text).path("translate").findPath("targetText").toString();
+        String s = mapper.readTree(text).path("translate").findPath("targetText").toString();
+        s = s.substring(1, s.length() - 1);
+        return s;
     }
 }

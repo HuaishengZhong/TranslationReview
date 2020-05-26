@@ -4,14 +4,14 @@ import cn.com.wind.wdp.querier.Querier;
 import cn.com.wind.wdp.trans.AbstractTranslator;
 import cn.com.wind.wdp.trans.impl.*;
 import cn.com.wind.wdp.util.TranslateUtil;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class Translate {
 
     @GetMapping("/trans")
@@ -19,10 +19,10 @@ public class Translate {
     public String translate(@RequestParam("engine") String engine,
                             @RequestParam("sl") String sl,
                             @RequestParam("tl") String tl,
-                            @RequestParam("text") String text) {
+                            @RequestParam("stext") String stext) {
 
         Querier<AbstractTranslator> querierTrans = new Querier<>();
-        querierTrans.setParams(TranslateUtil.getLang(sl), TranslateUtil.getLang(tl), text);
+        querierTrans.setParams(TranslateUtil.getLang(sl), TranslateUtil.getLang(tl), stext);
 
         List<String> resultTrans = null;
         switch (engine) {
