@@ -4,17 +4,11 @@ import cn.com.wind.wdp.lang.LANG;
 import cn.com.wind.wdp.trans.AbstractTranslator;
 import cn.com.wind.wdp.util.TranslateUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.collections4.Get;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpHost;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.params.CookiePolicy;
 import org.apache.http.util.EntityUtils;
-import org.hibernate.validator.internal.util.privilegedactions.GetMethod;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
