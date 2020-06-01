@@ -1,6 +1,7 @@
 package cn.com.wind.wdp.controller;
 
 import cn.com.wind.wdp.bean.TranslationResult;
+import cn.com.wind.wdp.service.RedisService;
 import cn.com.wind.wdp.service.TranslationResultService;
 import cn.com.wind.wdp.util.ExcelUtil;
 import cn.com.wind.wdp.util.TimeUtil;
@@ -17,6 +18,8 @@ public class Download {
 
     @Autowired
     private TranslationResultService translationResultService;
+    @Autowired
+    private RedisService redisService;
 
     @RequestMapping("/download")
     public String downloadResult() {
@@ -33,9 +36,10 @@ public class Download {
 
     @RequestMapping("/getJson")
     @ResponseBody
-    public List<TranslationResult> getJson() {
+    public List<Object> getJson() {
         Date day = new Date();
-        List<TranslationResult> result = translationResultService.getByTime(TimeUtil.getToday(day), TimeUtil.getNextDay(day));
+        String today = TimeUtil.getToday(day);
+        List<Object> result = redisService.lRange(today + "-result", 0, redisService.lSize(today + "-result") - 1);
         return result;
     }
 }

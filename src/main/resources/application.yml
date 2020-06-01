@@ -5,6 +5,9 @@ spring:
     multipart:
       enabled: true #开启文件上传
       max-file-size: 10MB #限制文件上传大小为10M
+  redis:
+    host: 127.0.0.1
+    port: 6379
 
 mybatis:
   mapper-locations:
