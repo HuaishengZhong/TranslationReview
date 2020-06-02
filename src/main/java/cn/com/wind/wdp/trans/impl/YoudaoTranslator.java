@@ -1,5 +1,6 @@
 package cn.com.wind.wdp.trans.impl;
 
+import cn.com.wind.wdp.config.TranslateCacheConfig;
 import cn.com.wind.wdp.lang.LANG;
 import cn.com.wind.wdp.trans.AbstractTranslator;
 import cn.com.wind.wdp.util.TranslateUtil;
@@ -52,9 +53,9 @@ public final class YoudaoTranslator extends AbstractTranslator {
     public String query() throws Exception {
         HttpPost request = new HttpPost(TranslateUtil.getUrlWithQueryString(url, formData));
 
-        request.setHeader("Cookie","OUTFOX_SEARCH_USER_ID=-2029237931@10.108.160.17;");
+        request.setHeader("Cookie", TranslateCacheConfig.youdaoCache);
         request.setHeader("Referer","http://fanyi.youdao.com/");
-        request.setHeader("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36");
+        request.setHeader("User-Agent",TranslateCacheConfig.userAgent);
 
         CloseableHttpResponse httpResponse = httpClient.execute(request);
         HttpEntity httpEntity = httpResponse.getEntity();

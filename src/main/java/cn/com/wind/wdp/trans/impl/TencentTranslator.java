@@ -1,5 +1,6 @@
 package cn.com.wind.wdp.trans.impl;
 
+import cn.com.wind.wdp.config.TranslateCacheConfig;
 import cn.com.wind.wdp.lang.LANG;
 import cn.com.wind.wdp.trans.AbstractTranslator;
 import cn.com.wind.wdp.util.TranslateUtil;
@@ -43,7 +44,7 @@ public final class TencentTranslator extends AbstractTranslator {
         HttpPost request = new HttpPost(url);
         request.setEntity(new UrlEncodedFormEntity(TranslateUtil.map2list(formData), "UTF-8"));
 
-        request.setHeader("Cookie", "fy_guid=d4480e20-1644-4a47-a98d-787cfa244fd2; qtv=bbbc7118b32d7a9a; qtk=DTmfpOAn6b6HWTGtjW7w5a/FOommFjJPAre3GpaRUzPCQSaqY3gOSzKYEFyRYwKnjUN3M9D0V59LVNGDKchtj+RBld2oqSAVvEaAQVVLApTHDB52kdQYQYKAsa2NLnl4lIUbr6pYKN5469mS5hjcmQ==;");
+        request.setHeader("Cookie", TranslateCacheConfig.tencentCache);
         request.setHeader("Origin", "http://fanyi.qq.com");
 
         CloseableHttpResponse response = httpClient.execute(request);

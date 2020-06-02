@@ -1,6 +1,7 @@
 package cn.com.wind.wdp.controller;
 
 import cn.com.wind.wdp.bean.TranslationResult;
+import cn.com.wind.wdp.config.FilePathConfig;
 import cn.com.wind.wdp.service.RedisService;
 import cn.com.wind.wdp.service.TranslationResultService;
 import cn.com.wind.wdp.util.ExcelUtil;
@@ -27,7 +28,7 @@ public class Download {
         List<TranslationResult> result = translationResultService.getByTime(TimeUtil.getToday(day), TimeUtil.getNextDay(day));
         String[] s = {"engine", "source", "target", "mark", "time"};
         try {
-            ExcelUtil.createExcel("/Users/huaishengzhong/Downloads/" + TimeUtil.getNowDay(day) + ".xlsx", s, result);
+            ExcelUtil.createExcel(FilePathConfig.downloadPath + TimeUtil.getNowDay(day) + ".xlsx", s, result);
         } catch (Exception e) {
             e.printStackTrace();
         }

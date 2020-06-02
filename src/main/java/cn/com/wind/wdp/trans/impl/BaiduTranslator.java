@@ -1,5 +1,6 @@
 package cn.com.wind.wdp.trans.impl;
 
+import cn.com.wind.wdp.config.TranslateCacheConfig;
 import cn.com.wind.wdp.lang.LANG;
 import cn.com.wind.wdp.trans.AbstractTranslator;
 import cn.com.wind.wdp.util.TranslateUtil;
@@ -51,8 +52,8 @@ public final class BaiduTranslator extends AbstractTranslator {
         HttpPost request = new HttpPost(url);
 
         request.setEntity(new UrlEncodedFormEntity(TranslateUtil.map2list(formData), "UTF-8"));
-        request.setHeader("Cookie", "BIDUPSID=09D8D04C588D781C2E4D8471F1F41D86; PSTM=1575458604; MCITY=-%3A; BAIDUID=2731C8CE95BBD973D2E14D6290697A24:FG=1; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; BDUSS=XNVcTJpLWtJZmpJNkVRTGVyeHBiTXQyakRDSklOVXBwNE1qdkJ4MmE2ZmZjZDllRVFBQUFBJCQAAAAAAAAAAAEAAAAf3Owzy6~U2sLDzb7W0LXEyMsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN~kt17f5Ldea; REALTIME_TRANS_SWITCH=1; FANYI_WORD_SWITCH=1; HISTORY_SWITCH=1; SOUND_SPD_SWITCH=1; SOUND_PREFER_SWITCH=1; Hm_lvt_64ecd82404c51e03dc91cb9e8c025574=1589199798,1590248286,1590248334,1590330715; BDRCVFR[feWj1Vr5u3D]=I67x6TjHwwYf0; delPer=0; PSINO=3; Hm_lpvt_64ecd82404c51e03dc91cb9e8c025574=1590396945; __yjsv5_shitong=1.0_7_d678a9943d7574123b0700f4d8cd0cd2e347_300_1590396945133_112.2.113.119_e73b02ec; yjs_js_security_passport=9cd6a99890f2175d54f826792c75e33f7e32ca71_1590396948_js; H_PS_PSSID=31730_1455_21085_31111_31254_30841_31464_30824_26350"); // fixme: 此处填写cookie
-        request.setHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36");
+        request.setHeader("Cookie", TranslateCacheConfig.baiduCache);
+        request.setHeader("User-Agent", TranslateCacheConfig.userAgent);
 
         CloseableHttpResponse response = httpClient.execute(request);
         HttpEntity entity = response.getEntity();
